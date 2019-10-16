@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.Threading.Tasks;
 
@@ -8,39 +9,41 @@ namespace DotNetCoreTest
     {
         static void Main(string[] args)
         {
+            Object lockObj = new object();
             dynamic obj = new System.Dynamic.ExpandoObject();
             Program p = new Program();
-            MyDelegate d1, d2, d3;
-            d1 = new MyDelegate(p.Test1);
-            d2 = new MyDelegate(p.Test2);
-            d3 = new MyDelegate(p.Test3);
-            d1("HAHA");
-            d2("XIXI");
-            d3("xixi");
+            MyDelegate d1 = new MyDelegate(p.Test1);
+            d1 += new MyDelegate(p.Test2);
+            d1 += new MyDelegate(p.Test3);
+            d1("XIXI");
             Test(obj);
-            int[] list1 = new int[10000] ;
+            List<int> list1 = new List<int>();
             for (int i = 0; i < 10000; i++)
             {
-                list1[i]=new Random().Next(0, 10000);
+                list1.Add(new Random().Next(0, 10000));
             }
-            int[] list2 = (int[])list1.Clone();
+            List<int> list2 = new List<int>(list1.ToArray());
             Stopwatch stopwatch1 = new Stopwatch();
             stopwatch1.Start();
             foreach (var item in list1)
             {
-                Console.WriteLine("非平行"+item);
+                Console.WriteLine("不平行"+item);
             }
             stopwatch1.Stop();
             Stopwatch stopwatch2 = new Stopwatch();
             stopwatch2.Start();
-            Parallel.ForEach(list2, item =>
+            Parallel.ForEach(list2, item => 
             {
-                Console.WriteLine("平行"+item);
+
+                lock (lockObj)
+                {
+                    Console.WriteLine("平行" + item);
+                }
             });
             stopwatch2.Stop();
             Console.WriteLine("非平行" + stopwatch1.Elapsed);
 
-            Console.WriteLine("平行"+ stopwatch2.Elapsed);
+            Console.WriteLine("平行" + stopwatch2.Elapsed);
         }
 
         delegate void MyDelegate(string name);
@@ -56,9 +59,6 @@ namespace DotNetCoreTest
         {
             Console.WriteLine(name);
         }
-
-
-
         public static void Test<T>(T parm)
         {
             Console.WriteLine(parm.GetType());
