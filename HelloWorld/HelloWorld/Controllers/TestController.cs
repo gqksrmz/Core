@@ -13,7 +13,7 @@ namespace HelloWorld.Controllers
     {
         public IActionResult Index()
         {
-            //电子交易产品研发
+            
             dynamic obj = new System.Dynamic.ExpandoObject();
             obj.Id = 1;
             obj.Name = "Test";

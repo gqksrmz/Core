@@ -27,19 +27,18 @@ namespace DotNetCoreTest
             stopwatch1.Start();
             foreach (var item in list1)
             {
-                Console.WriteLine("不平行"+item);
+                Console.WriteLine("不平行" + item);
             }
             stopwatch1.Stop();
             Stopwatch stopwatch2 = new Stopwatch();
             stopwatch2.Start();
-            Parallel.ForEach(list2, item => 
-            {
-
-                lock (lockObj)
-                {
-                    Console.WriteLine("平行" + item);
-                }
-            });
+            Parallel.ForEach(list2, item =>
+             {
+                 lock (lockObj)
+                 {
+                     Console.WriteLine("平行" + item);
+                 }
+             });
             stopwatch2.Stop();
             Console.WriteLine("非平行" + stopwatch1.Elapsed);
 
