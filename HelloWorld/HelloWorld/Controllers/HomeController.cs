@@ -22,7 +22,9 @@ namespace HelloWorld.Controllers
                     "orange", "blueberry", "grape", "strawberry" };
             // List<string> query = fruits.Where(fruit => fruit.Length < 6).ToList();
             IEnumerable<string> query = fruits.Where(fruit => fruit.Length < 6);
-
+            IEnumerable<string> query2 = from item in fruits
+                                         where item.Length > 6 
+                                         select item;
             return View(model);
         }
     }
