@@ -1,5 +1,6 @@
 ﻿using HelloWorld.Models;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -16,8 +17,9 @@ namespace HelloWorld.Controllers
         }
         public ViewResult Index()
         {
+            
             var model = new Employee { ID = 1, Name = "张飞" };
-
+            
             List<string> fruits = new List<string> { "apple", "passionfruit", "banana", "mango",
                     "orange", "blueberry", "grape", "strawberry" };
             // List<string> query = fruits.Where(fruit => fruit.Length < 6).ToList();
