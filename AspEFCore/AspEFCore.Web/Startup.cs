@@ -36,9 +36,13 @@ namespace AspEFCore.Web
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
             services.AddDbContext<MyContext>(options =>
             {
-                options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"));
+                options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"),
+                    opts =>
+                    {
+                        opts.MaxBatchSize(100000);
+                    });
                 options.EnableSensitiveDataLogging(true);//日志铭感数据加密 true不加密 false加密
-            });
+            }, ServiceLifetime.Transient);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

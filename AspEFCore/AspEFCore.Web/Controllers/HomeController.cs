@@ -20,25 +20,7 @@ namespace AspEFCore.Web.Controllers
         }
         public IActionResult Index()
         {
-            var province = new Province
-            {
-                Name = "天津",
-                Population = 10000000
-            };
-            var company = new Company
-            {
-                Name = "TaiDa",
-                EstablishDate = new DateTime(1998, 1, 1),
-                LegalPerson = "Secret Man"
-            };
-            // _context.Provinces.Add(province);
-            // _context.Provinces.AddRange(province, province1, province2);
-            //_context.Provinces.AddRange(new List<Province>
-            //{
-            //    province,province1,province2
-            //});
-            _context.AddRange(province, company);
-            _context.SaveChanges();
+            var provinces = _context.Provinces.Where(x=>x.Name=="北京") .ToList();
             return View();
         }
 
