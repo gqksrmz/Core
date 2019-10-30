@@ -6,7 +6,7 @@ namespace AspEFCore.Domain
     {
         public City()
         {
-            CityCompanies = new List<CityCompany>();
+            CityCompanies = new List<CityCompany>(); 
         }
         public int Id { get; set; }
         public string Name { get; set; }
