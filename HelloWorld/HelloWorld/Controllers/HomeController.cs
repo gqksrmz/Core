@@ -33,5 +33,10 @@ namespace HelloWorld.Controllers
                 select item;
             return View(model);
         }
+        [Authorize]
+        public IActionResult TestResult()
+        {
+            return Content("HELLO ");
+        }
     }
 }

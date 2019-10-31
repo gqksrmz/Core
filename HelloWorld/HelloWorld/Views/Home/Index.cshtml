@@ -3,7 +3,7 @@
 *@
 @{
     ViewBag.Title = "Home控制器下的Index方法";
-    //Layout = "~/Views/Shared/_Layout.cshtml";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 
 }
 @model HelloWorld.Models.Employee
@@ -12,10 +12,10 @@
     <div>这个消息来自于Home控制器下的Index视图文件index.cshtml</div>
     <div>@Model.ID</div>
     <div>@Model.Name</div>
-    <form method="post">
-        <input asp-for="ID" />
-        <input asp-for="Name" />
-        <button type="submit" name="save">保存</button>
-    </form>
+<form method="post">
+    <input asp-for="ID" />
+    <input asp-for="Name" />
+    <button type="submit" name="save">保存</button>
+</form>
 </body>
 
