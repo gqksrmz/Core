@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Channels;
 using System.Threading.Tasks;
+using HelloWorld.Data;
 using HelloWorld.Models;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -15,10 +17,12 @@ namespace HelloWorld
 {
     public class Startup
     {
-        public Startup(IHostingEnvironment environment)
+        private readonly IConfiguration _configuration;
+        public Startup(IHostingEnvironment environment,IConfiguration configuration)
         {
             var builder = new ConfigurationBuilder().SetBasePath(environment.ContentRootPath).AddJsonFile("AppSettings.json");
             Configuration = builder.Build();
+            _configuration = configuration;
         }
         public IConfiguration Configuration { get; set; }
         // This method gets called by the runtime. Use this method to add services to the container.
@@ -26,6 +30,12 @@ namespace HelloWorld
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc();//注册MVC服务
+            services.AddDbContext<DataContext>(options =>
+            {
+                //var connectionString= _configuration["ConnectionStrings:DefaultConnection"];
+                var connectionString = _configuration.GetConnectionString("DefaultConnection");
+                options.UseSqlServer(connectionString);
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
