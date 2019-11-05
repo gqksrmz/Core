@@ -21,6 +21,7 @@ namespace AspEFCore.Web.Controllers
         public IActionResult Index()
         {
             var provinces = _context.Provinces.Where(x=>x.Name=="北京") .ToList();
+            Console.WriteLine("Hello world!");
             return View();
         }
 
