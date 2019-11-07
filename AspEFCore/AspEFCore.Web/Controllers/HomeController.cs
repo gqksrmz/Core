@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using System.Text;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using AspEFCore.Web.Models;
@@ -20,10 +21,11 @@ namespace AspEFCore.Web.Controllers
         }
         public IActionResult Index()
         {
-            var provinces = _context.Provinces.Where(x=>x.Name=="北京") .ToList();
+            var provinces = _context.Provinces.Where(x => x.Name == "北京").ToList();
             Console.WriteLine("Hello world!");
             Console.WriteLine("Hello world!");
-            
+            string s = null;
+            char str = ' ';
             return View();
         }
 
@@ -51,5 +53,6 @@ namespace AspEFCore.Web.Controllers
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
+       
     }
 }

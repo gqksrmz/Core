@@ -31,6 +31,7 @@ namespace HelloWorld.Controllers
             IEnumerable<string> query2 = from item in fruits
                 where item.Length > 6
                 select item;
+            Console.WriteLine("hello world");
             return View(model);
         }
         [Authorize]
