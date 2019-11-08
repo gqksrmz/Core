@@ -32,6 +32,7 @@ namespace HelloWorld.Controllers
                 where item.Length > 6
                 select item;
             Console.WriteLine("hello world");
+            Console.WriteLine("hello world");
             return View(model);
         }
         [Authorize]
