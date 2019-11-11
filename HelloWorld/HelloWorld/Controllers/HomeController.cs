@@ -35,6 +35,8 @@ namespace HelloWorld.Controllers
             Console.WriteLine("hello world");
             Console.WriteLine("hello world");
             Console.WriteLine("hello world");
+            Console.WriteLine("hello world");
+            Console.WriteLine("hello world");
             return View(model);
         }
         [Authorize]
