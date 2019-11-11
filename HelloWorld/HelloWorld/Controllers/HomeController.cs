@@ -33,10 +33,6 @@ namespace HelloWorld.Controllers
                 select item;
             Console.WriteLine("hello world");
             Console.WriteLine("hello world");
-            Console.WriteLine("hello world");
-            Console.WriteLine("hello world");
-            Console.WriteLine("hello world");
-            Console.WriteLine("hello world");
             return View(model);
         }
         [Authorize]
