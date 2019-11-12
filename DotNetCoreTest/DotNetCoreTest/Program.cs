@@ -11,6 +11,7 @@ namespace DotNetCoreTest
         static void Main(string[] args)
         {
             Console.WriteLine("AAAA");
+            Console.WriteLine("AAAA");
 
             //Object lockObj = new object();
             //dynamic obj = new System.Dynamic.ExpandoObject();
