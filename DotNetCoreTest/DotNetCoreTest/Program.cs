@@ -10,6 +10,7 @@ namespace DotNetCoreTest
     {
         static void Main(string[] args)
         {
+            Console.WriteLine("AAAA"); 
             Console.WriteLine("AAAA");
 
             Console.WriteLine("AAAA");
