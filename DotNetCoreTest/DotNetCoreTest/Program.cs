@@ -10,6 +10,8 @@ namespace DotNetCoreTest
     {
         static void Main(string[] args)
         {
+            Console.WriteLine("AAAA");
+
             //Object lockObj = new object();
             //dynamic obj = new System.Dynamic.ExpandoObject();
             //Program p = new Program();
@@ -44,10 +46,10 @@ namespace DotNetCoreTest
             //Console.WriteLine("非平行" + stopwatch1.Elapsed);
 
             //Console.WriteLine("平行" + stopwatch2.Elapsed);
-          
+
         }
 
-        
+
 
 
         //delegate void MyDelegate(string name);
@@ -67,6 +69,5 @@ namespace DotNetCoreTest
         //{
         //    Console.WriteLine(parm.GetType());
         //}
-
     }
 }
