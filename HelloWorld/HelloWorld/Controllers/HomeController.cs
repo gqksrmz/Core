@@ -19,7 +19,6 @@ namespace HelloWorld.Controllers
         public ViewResult Index()
         {
             Console.WriteLine("aaa");
-            Console.WriteLine("aaa");
             var model = new Employee {ID = 1, Name = "张飞"};
 
             List<string> fruits = new List<string>
