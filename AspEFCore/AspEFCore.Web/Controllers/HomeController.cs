@@ -45,6 +45,7 @@ namespace AspEFCore.Web.Controllers
 
         public IActionResult Privacy()
         {
+            Console.WriteLine("aaa");
             return View();
         }
 
