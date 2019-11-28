@@ -39,7 +39,7 @@ namespace AspEFCore.Web.Controllers
         public IActionResult Contact()
         {
             ViewData["Message"] = "Your contact page.";
-
+            Task ta = new TaskFactory().StartNew(() => { });
             return View();
         }
 
