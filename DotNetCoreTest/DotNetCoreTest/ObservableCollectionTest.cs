@@ -14,6 +14,7 @@ namespace DotNetCoreTest
             ObservableCollection<int> s = new ObservableCollection<int>();
 
             s.CollectionChanged += S_CollectionChanged;
+
             s.Add(1);
 
             Task task = Task.Factory.StartNew(() =>
