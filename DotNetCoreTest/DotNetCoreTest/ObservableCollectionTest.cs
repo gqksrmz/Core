@@ -24,11 +24,25 @@ namespace DotNetCoreTest
             {
                 //并行循环
             });
+
+
+            List<Tuple<string, string, int, int, int>> listPerson = new List<Tuple<string, string, int, int, int>>()
+            {
+                new Tuple<string, string, int, int, int>("菲菲","女",23,161,50),
+                new Tuple<string, string, int, int, int>("张三","男",25,171,66),
+                Tuple.Create<string,string,int,int,int>("李四","男",25,178,78)
+            };
+            foreach (var item in listPerson)
+            {
+                Console.WriteLine($"{item.Item1}  {item.Item2}  {item.Item3}  {item.Item4}  {item.Item5}");
+            }
         }
 
         private static void S_CollectionChanged(object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
         {
             Console.WriteLine("aaa");
         }
+        
+
     }
 }
