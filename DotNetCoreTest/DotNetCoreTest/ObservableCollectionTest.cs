@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Diagnostics;
 using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
@@ -16,7 +17,6 @@ namespace DotNetCoreTest
             s.CollectionChanged += S_CollectionChanged;
 
             s.Add(1);
-
             Task task = Task.Factory.StartNew(() =>
                 {
                     Console.WriteLine("bbb");
@@ -25,7 +25,11 @@ namespace DotNetCoreTest
             {
                 //并行循环
             });
-
+            Process[] arr=Process.GetProcessesByName("ProcessName");
+            for (int i = arr.Length - 1; i >=0 ; i--)
+            {
+                arr[i].Kill();
+            }
 
             List<Tuple<string, string, int, int, int>> listPerson = new List<Tuple<string, string, int, int, int>>()
             {
