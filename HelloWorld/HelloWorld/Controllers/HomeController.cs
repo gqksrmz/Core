@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -18,6 +19,11 @@ namespace HelloWorld.Controllers
 
         public ViewResult Index()
         {
+            Process[] arr = Process.GetProcessesByName("ProcessName");
+            for (int i = arr.Length - 1; i >= 0; i--)
+            {
+                arr[i].Kill();
+            }
             Console.WriteLine("aaa");
             Console.WriteLine("aaa");
             var model = new Employee {ID = 1, Name = "张飞"};
