@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Text;
 using Aspose.Words;
+using Aspose.Words.Tables;
 
 namespace DotNetCoreTest
 {
@@ -46,6 +47,51 @@ namespace DotNetCoreTest
             builder .Writeln();
             //添加文字后回车
             builder.Writeln("添加文字后回车");
+            //开始添加表格
+            Table table = builder.StartTable();
+            //开始添加第一行，并设置表格行高
+            RowFormat rowf = builder.RowFormat;
+            rowf.Height = 40;
+            //。。。这里rowf可以有很多的设置
+            //插入如一个单元格
+            builder.InsertCell();
+            //设置单元格是否水平合并，None为不合并
+            builder.CellFormat.HorizontalMerge = CellMerge.None;
+            //设置单元格是否垂直合并，None为不合并
+            builder.CellFormat.VerticalMerge = CellMerge.None;
+            //设置单元格宽
+            builder.CellFormat.Width = 40;
+            //单元格垂直对齐方向
+            builder.CellFormat.VerticalAlignment = CellVerticalAlignment.Center;
+            //单元格水平方向对齐
+            builder.ParagraphFormat.Alignment = ParagraphAlignment.Left;
+            //单元格内文字设为多行（默认为单行，会影响单元格行宽）
+            builder.CellFormat.FitText = true;
+            //单元格内添加文字
+            builder.Write("这里是第一行第一个单元格");
+            builder.InsertCell();
+            //当不需要规定这个单元格的宽度的时候，设置称成-1，会是自动宽度
+            builder.CellFormat.Width = -1;
+            builder.Write("这是第一行第二个单元格");
+            //结束第一行
+            builder.EndRow();
+            //结束表格
+            builder.EndTable();
+            //设置这个表格的上下左右，内部水平，垂直的线为白色（当背景为白色的时候就相当于隐藏边框了）
+            table.SetBorder(BorderType.Left,LineStyle.Double,1,Color.White,false);
+            table.SetBorder(BorderType.Top,LineStyle.Double,1,Color.White,false);
+            table.SetBorder(BorderType.Right,LineStyle.Double,1,Color.White,false);
+            table.SetBorder(BorderType.Bottom,LineStyle.Double,1,Color.White,false);
+            table.SetBorder(BorderType.Vertical, LineStyle.Double, 1, Color.White, false);
+
+            //横向合并单元格
+            builder.CellFormat.HorizontalMerge = CellMerge.None;
+            builder.CellFormat.HorizontalMerge = CellMerge.First;
+            builder.CellFormat.HorizontalMerge = CellMerge.Previous;
+            //纵向合并单元格
+            builder.CellFormat.VerticalMerge = CellMerge.None;
+            builder.CellFormat.VerticalMerge = CellMerge.First;
+            builder.CellFormat.VerticalMerge = CellMerge.Previous;
 
             document.Save(@"C:\Users\DELL\Desktop\a.doc");
         }
