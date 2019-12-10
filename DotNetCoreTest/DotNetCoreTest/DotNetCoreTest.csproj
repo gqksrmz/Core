@@ -5,4 +5,10 @@
     <TargetFramework>netcoreapp2.1</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Reference Include="Aspose.Words">
+      <HintPath>..\..\..\..\..\Desktop\dll\Aspose.Words.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
 </Project>
