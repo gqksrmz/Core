@@ -11,6 +11,7 @@ namespace DotNetCoreTest
     {
         public static void Main(string[] args)
         {
+            Console.WriteLine("aaa");
             Document document=new Document();//新建一个空白文档
             //这里面的`builder`相当于一个画笔，提前给他规定样式，
             //然后他就能根据你的要求画出你想画的Word。这里的画笔使用的是就近原则，
