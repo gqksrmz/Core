@@ -25,6 +25,10 @@ namespace VideoProject.UI.Web
         {
             services.AddRouting();   
             services.AddControllersWithViews();
+            services.AddMvc(options =>
+            {
+                
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
