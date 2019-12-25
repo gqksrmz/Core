@@ -7,6 +7,7 @@ namespace VideoProject.DAL
         public static void Main(string[] args)
         {
             Console.WriteLine("AAAAAAAAAAAAAA");
+            Console.WriteLine("AAAAAAAAAAAAAA");
         }
 
     }
