@@ -6,7 +6,7 @@ using System.Text;
 
 namespace VideoProject.Core
 {
-    class DES
+    class DESHelper
     {
         //加密
         public static string DESEncrypt(string data)
@@ -33,24 +33,49 @@ namespace VideoProject.Core
                 2,
                 1
             };
-            byte[] byKey = key;
-            byte[] byIV = iv;
-
-            DESCryptoServiceProvider cryptoProvider = new DESCryptoServiceProvider();
-            int i = cryptoProvider.KeySize;
-            MemoryStream ms = new MemoryStream();
-            CryptoStream cst = new CryptoStream(ms, cryptoProvider.CreateEncryptor(byKey, byIV), CryptoStreamMode.Write);
-
-            StreamWriter sw = new StreamWriter(cst);
-            sw.Write(data);
-            sw.Flush();
-            cst.FlushFinalBlock();
-            sw.Flush();
-            return Convert.ToBase64String(ms.GetBuffer(), 0, (int)ms.Length);
+            MemoryStream memoryStream = null;
+            CryptoStream cryptoStream = null;
+            StreamWriter streamWriter = null;
+            string result = string.Empty;
+            try
+            {
+                DESCryptoServiceProvider cryptoProvider = new DESCryptoServiceProvider();
+                int i = cryptoProvider.KeySize;
+                memoryStream = new MemoryStream();
+                cryptoStream = new CryptoStream(memoryStream, cryptoProvider.CreateEncryptor(key, iv),
+                    CryptoStreamMode.Write);
+                streamWriter = new StreamWriter(cryptoStream);
+                streamWriter.Write(data);
+                streamWriter.Flush();
+                cryptoStream.FlushFinalBlock();
+                streamWriter.Flush();
+                result = Convert.ToBase64String(memoryStream.GetBuffer(), 0, (int)memoryStream.Length);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                if (streamWriter != null)
+                {
+                    streamWriter.Close();
+                }
+                if (cryptoStream != null)
+                {
+                    cryptoStream.Close();
+                }
+                if (memoryStream != null)
+                {
+                    memoryStream.Close();
+                }
+            }
+            return result;
         }
         //解密
-        private static string DESDecrypt(byte[] byteInput)
+        private static string DESDecrypt(string data)
         {
+            byte[] byteInput = Convert.FromBase64String(data);
             byte[] key = new byte[]
             {
                 1,
