@@ -24,6 +24,7 @@ namespace AspEFCore.Web.Controllers
             var provinces = _context.Provinces.Where(x => x.Name == "北京").ToList();
             Console.WriteLine("Hello world!");
             Console.WriteLine("Hello world!");
+            Console.WriteLine("Hello world!");
             string s = null;
             char str = ' ';
             return View();
