@@ -21,6 +21,7 @@ namespace VideoProject.UI.Web.Controllers
         public IActionResult Index()
         {
             _logger.LogDebug("这是Index页面。。。。");
+            _logger.LogDebug("这是Index页面。。。。");
             return View();
         }
 
