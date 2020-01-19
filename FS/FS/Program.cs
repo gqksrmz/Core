@@ -18,6 +18,7 @@ namespace FS
             //string text2 = Program.DESDecrypt(byteInput);
             string s2 = "Data Source=127.0.0.1;Initial Catalog=BillingDB;User ID=sa;Password=!sql716416";
             string result = Program.DESEncrypt(s2);
+            Console.WriteLine("\u4f18\u79c0");
             Console.ReadKey();
         }
         private static string DESDecrypt(byte[] byteInput)
