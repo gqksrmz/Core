@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form2));
             this.txtUName = new System.Windows.Forms.TextBox();
             this.txtUPwd = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
@@ -87,6 +88,7 @@
             this.Controls.Add(this.label4);
             this.Controls.Add(this.txtUPwd);
             this.Controls.Add(this.txtUName);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Form2";
             this.Text = "注册";
             this.ResumeLayout(false);
